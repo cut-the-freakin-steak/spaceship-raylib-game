@@ -1,0 +1,1 @@
+([('main', '/Users/steak/spaceship-raylib-game/dist/main', 'EXECUTABLE')],)
