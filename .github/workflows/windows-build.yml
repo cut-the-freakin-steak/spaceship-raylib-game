@@ -29,7 +29,7 @@ jobs:
           pip install random
           pip install os
           pip install sys
-          pyinstaller --onefile --noconsole main.py
+          pyinstaller --onefile --noconsole --add-data "images/*:images" --add-data "audio/*:audio" main.py
           if (Test-Path requirements.txt) { pip install -r requirements.txt } else { echo "No requirements.txt found, skipping..." }
 
       - name: Upload EXE as Artifact
