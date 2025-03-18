@@ -140,7 +140,7 @@ def main() -> None:
 
       # gameplay drawing      
       laser_shot_timer.update()
-      if is_key_pressed(KEY_Z):
+      if is_key_down(KEY_Z):
         if can_fire_laser:
           lasers.append(Laser(ship.pos))
           laser_shot_timer.activate()
@@ -192,6 +192,25 @@ def main() -> None:
         7.0,
         WHITE
       )
+      
+      score_text_dimensions = measure_text_ex(font, f"score: {score}", 100, 7.0)
+      draw_text_ex(
+        font,
+        f"score: {score}",
+        Vector2(
+          int((GAME_WIDTH / 2) - (score_text_dimensions.x / 2)),
+          scale_y(725)
+        ),
+        100,
+        7.0,
+        WHITE
+      )
+
+      if is_key_pressed(KEY_ENTER):
+        state_game_over_to_gameplay()
+
+      if is_key_pressed(KEY_ESCAPE):
+        state_game_over_to_title()
 
       button_dimensions = Vector2(500, 150)
       play_button = Button(
@@ -243,6 +262,9 @@ def main() -> None:
       )
 
       play_button_alpha = 255
+
+      if is_key_pressed(KEY_ENTER):
+        state_title_to_gameplay()
 
       # if the mouse is hovering over the button, make it more transparent
       if check_collision_point_rec(mouse, play_button.button):
@@ -423,6 +445,18 @@ def state_gameplay_to_game_over() -> None:
 def state_game_over_to_gameplay() -> None:
   game_state["game_over"] = False
   game_state["gameplay"] = True
+  ship.pos = Vector2(
+    (GAME_WIDTH / 2) - (ship.texture.width / 2),
+    (GAME_HEIGHT / 2) - (ship.texture.height / 2),
+  )
+  meteors.clear()
+  global score
+  score = 0
+
+
+def state_game_over_to_title() -> None:
+  game_state["game_over"] = False
+  game_state["title_screen"] = True
   ship.pos = Vector2(
     (GAME_WIDTH / 2) - (ship.texture.width / 2),
     (GAME_HEIGHT / 2) - (ship.texture.height / 2),
