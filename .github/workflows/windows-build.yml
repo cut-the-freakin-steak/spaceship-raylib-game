@@ -24,6 +24,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
+          pip install pyray
+          pip install raylib
+          pip install random
+          pip install os
+          pip install sys
           pyinstaller --onefile --noconsole main.py
           if (Test-Path requirements.txt) { pip install -r requirements.txt } else { echo "No requirements.txt found, skipping..." }
 
