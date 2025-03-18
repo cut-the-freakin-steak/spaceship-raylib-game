@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Windows-Executable
-          path: dist/vidja_game.exe
+          path: dist/main.exe
