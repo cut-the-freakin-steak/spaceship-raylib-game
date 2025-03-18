@@ -76,12 +76,13 @@ def main() -> None:
     (GAME_HEIGHT / 2) - (ship.texture.height / 2),
   )
 
+  global score
   score = 0
 
   stars = {Star() for i in range(25)}
 
   lasers = []
-  laser_shot_timer = Timer(0.5, False, False, on_laser_shot_timer_timeout)
+  laser_shot_timer = Timer(0.45, False, False, on_laser_shot_timer_timeout)
   global can_fire_laser
   can_fire_laser = True
 
@@ -427,6 +428,8 @@ def state_game_over_to_gameplay() -> None:
     (GAME_HEIGHT / 2) - (ship.texture.height / 2),
   )
   meteors.clear()
+  global score
+  score = 0
 
 
 if __name__ == "__main__":

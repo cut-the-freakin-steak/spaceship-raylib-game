@@ -6,7 +6,7 @@ class Laser:
     self.texture = load_texture("images/laser.png")
     self.ship_texture = load_texture("images/spaceship.png") 
     self.sfx = load_sound("audio/laser.wav")
-    set_sound_volume(self.sfx, 0.2)
+    set_sound_volume(self.sfx, 0.75)
     play_sound(self.sfx)
     self.pos = Vector2(pos.x + (self.ship_texture.width / 2 - 4.5), pos.y)
     self.collision_rec = Rectangle(
