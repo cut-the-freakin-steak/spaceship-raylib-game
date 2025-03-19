@@ -1,0 +1,7 @@
+All libraries required for this project:
+
+pyray
+raylib
+random
+os
+sys
